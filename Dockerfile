@@ -1,4 +1,3 @@
-# Using official python runtime base image
 FROM ubuntu:18.04
 
 # Set the application directory
