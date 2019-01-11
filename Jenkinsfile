@@ -14,7 +14,7 @@ pipeline {
 
         stage('Updating Serices') {
             steps {
-                sh """docker run --rm ${env.SWARM_SERVICE_NAME}:${env.GIT_COMMIT}"""
+                sh """docker run --rm -v /var/run/docker.sock:/var/run/docker.sock ${env.SWARM_SERVICE_NAME}:${env.GIT_COMMIT}"""
             }
         }    
     }
