@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    stages {
+        stage('Performing Actions') {
+            steps {
+                echo "Running ${params.OPERATION} on ${params.SERVICE_NAME}"
+                if (params.OPERATION == 'logs') {
+                    sh """
+                    docker service logs -t ${params.SERVICE_NAME}
+                    """
+                }
+                if (params.OPERATION == 'stop') {
+                    sh """
+                    docker service scale  $params.SERVICE_NAME}=0
+                    """
+                }
+            }
+        }  
+    }
+}
