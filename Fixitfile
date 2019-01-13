@@ -9,7 +9,8 @@ pipeline {
                     docker service logs -t ${params.SERVICE_NAME}
                 fi
                 if [ "${params.OPERATION}" = "stop" ]; then
-                    docker service scale ${params.SERVICE_NAME}=0
+                    docker service scale test_${params.SERVICE_NAME}=0
+                    docker service scale prod_${params.SERVICE_NAME}=0
                 fi
                 """
             }
