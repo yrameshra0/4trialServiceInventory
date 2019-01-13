@@ -8,7 +8,7 @@ echo "$value" |
     while read -r service_name 
     do
         #Ignores the first line of the services file which is informative
-        if [ "$("$service_name" | grep -c "#")" -eq 1 ]; then
+        if [ "$(echo "$service_name" | grep -c "#")" -eq 1 ]; then
             continue
         fi
         service_already_installed=$(docker service ls --format "{{.Name}}" | grep -c "$service_name")
@@ -24,5 +24,8 @@ echo "$value" |
         docker stack deploy -c services.yml prod
         printf "\nInstalling services to test \n"
         docker stack deploy -c services.yml test
+    fi
+    if [ $count -eq 0 ]; then
+        printf "\nAll the services listed are already installed !!!\n"
     fi
 }

@@ -1,6 +1,0 @@
-version: "3"
-services:
-    stack_proxy:
-      image: scratch:latest
-    stack_health:
-      image: scratch:latest
