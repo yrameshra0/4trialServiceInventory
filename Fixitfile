@@ -4,17 +4,15 @@ pipeline {
         stage('Performing Actions') {
             steps {
                 echo "Running ${params.OPERATION} on ${params.SERVICE_NAME}"
-                if (params.OPERATION == 'logs') {
-                    sh """
+                sh """
+                if [ "${params.OPERATION}" -eq "logs" ]; then
                     docker service logs -t ${params.SERVICE_NAME}
-                    """
-                }
-                if (params.OPERATION == 'stop') {
-                    sh """
-                    docker service scale  $params.SERVICE_NAME}=0
-                    """
-                }
+                fi
+                if [ "${params.OPERATION}" -eq "stop" ]; then
+                    docker service scale  ${params.SERVICE_NAME}=0
+                fi    
+                """
             }
-        }  
-    }
+        }
+    }  
 }
