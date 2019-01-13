@@ -4,6 +4,7 @@ pipeline {
         stage('Performing Actions') {
             steps {
                 echo "Running ${params.OPERATION} on ${params.SERVICE_NAME}"
+                sh """echo hello"""
             }
         }  
     }

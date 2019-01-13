@@ -6,9 +6,7 @@ pipeline {
     stages {
         stage('Building') {
             steps {
-                sh """
-                docker build -t ${env.SWARM_SERVICE_NAME}:${env.GIT_COMMIT} .
-                """
+                sh """docker build -t ${env.SWARM_SERVICE_NAME}:${env.GIT_COMMIT} ."""
             }
         }  
 
