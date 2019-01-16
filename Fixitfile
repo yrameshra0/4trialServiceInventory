@@ -12,6 +12,10 @@ pipeline {
                     docker service scale test_${params.SERVICE_NAME}=0
                     docker service scale prod_${params.SERVICE_NAME}=0
                 fi
+                if [ "${params.OPERATION}" = "remove" ]; then
+                    docker service rm test_${params.SERVICE_NAME}=0
+                    docker service rm prod_${params.SERVICE_NAME}=0
+                fi
                 """
             }
         }  
