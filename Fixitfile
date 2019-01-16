@@ -6,7 +6,7 @@ pipeline {
                 echo "Running ${params.OPERATION} on ${params.SERVICE_NAME}"
                 sh """
                 if [ "${params.OPERATION}" = "logs" ]; then
-                    docker service logs -t ${params.SERVICE_NAME}
+                    docker service logs -t ${params.FOR_STACK}_${params.SERVICE_NAME}
                 fi
                 if [ "${params.OPERATION}" = "stop" ]; then
                     docker service scale test_${params.SERVICE_NAME}=0
