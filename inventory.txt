@@ -1,3 +1,5 @@
 # List of services that we want to instantiate for 4trial working
 stack_proxy
 stack_health
+app_elastic
+app_movie_search
